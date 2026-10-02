@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Businessclub | SV Spakenburg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blauw:#1F4089;
+    --blauw-diep:#16306B;
+    --blauw-licht:#2C57AC;
+    --inkt:#061526;
+    --grijs:#5A6577;
+    --rand:#DDE2EA;
+    --vlak:#F5F7FA;
+    --wit:#ffffff;
+    --accent:#C3F930;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Montserrat',system-ui,-apple-system,sans-serif;
+    color:var(--inkt);
+    background:var(--wit);
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+
+  .wrap{width:min(1200px,92vw);margin:0 auto;}
+
+  /* ---------- topbalk ---------- */
+  .topbalk{
+    background:var(--blauw-diep);
+    color:rgba(255,255,255,.9);
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-weight:500;
+  }
+  .topbalk .wrap{display:flex;justify-content:flex-end;gap:26px;padding:9px 0;}
+  .topbalk a:hover{color:var(--accent);}
+
+  /* ---------- header ---------- */
+  header.site{
+    background:var(--wit);
+    border-bottom:1px solid var(--rand);
+    position:sticky;top:0;z-index:50;
+  }
+  header.site .wrap{display:flex;align-items:center;gap:36px;padding:14px 0;}
+  header.site img.logo{width:74px;flex:0 0 auto;}
+  nav.hoofd{display:flex;gap:26px;margin-left:auto;align-items:center;}
+  nav.hoofd a{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+    padding:6px 0;
+    position:relative;
+  }
+  nav.hoofd a::after{
+    content:'';position:absolute;left:0;right:100%;bottom:0;height:2px;
+    background:var(--blauw);transition:right .28s cubic-bezier(.22,.61,.36,1);
+  }
+  nav.hoofd a:hover::after,nav.hoofd a.actief::after{right:0;}
+  nav.hoofd a.actief{color:var(--blauw);}
+  .knop-nav{
+    background:var(--blauw);color:var(--wit)!important;
+    padding:11px 20px!important;border-radius:6px;font-size:12px!important;
+  }
+  .knop-nav::after{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(105deg,var(--blauw-diep) 0%,var(--blauw) 62%,var(--blauw-licht) 100%);
+    color:var(--wit);
+    padding:74px 0 66px;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(900px 420px at 88% 18%,rgba(195,249,48,.13),transparent 70%);
+    pointer-events:none;
+  }
+  .hero .wrap{position:relative;z-index:2;}
+  .hero .kicker{
+    font-size:11.5px;letter-spacing:.32em;text-transform:uppercase;
+    font-weight:600;color:rgba(255,255,255,.72);margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(34px,5.1vw,58px);
+    font-weight:800;
+    letter-spacing:-.02em;
+    line-height:1.08;
+    max-width:19ch;
+    text-wrap:balance;
+  }
+  .hero .lead{
+    margin-top:20px;
+    font-size:clamp(16px,1.55vw,19px);
+    font-weight:400;
+    color:rgba(255,255,255,.88);
+    max-width:58ch;
+    line-height:1.6;
+  }
+  .knoppen{display:flex;flex-wrap:wrap;gap:13px;margin-top:32px;}
+  .knop{
+    display:inline-flex;align-items:center;gap:9px;
+    font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+    padding:15px 26px;border-radius:6px;
+    transition:transform .22s cubic-bezier(.22,.61,.36,1),background .22s,color .22s;
+  }
+  .knop:hover{transform:translateY(-2px);}
+  .knop-wit{background:var(--wit);color:var(--blauw-diep);}
+  .knop-omlijnd{border:1.6px solid rgba(255,255,255,.55);color:var(--wit);}
+  .knop-omlijnd:hover{background:rgba(255,255,255,.12);}
+  .knop-blauw{background:var(--blauw);color:var(--wit);}
+  .knop-blauw:hover{background:var(--blauw-diep);}
+
+  /* hero-cijfers */
+  .hero-cijfers{
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:0;margin-top:46px;
+    border-top:1px solid rgba(255,255,255,.2);
+    padding-top:26px;
+    max-width:660px;
+  }
+  .hero-cijfers div{padding-right:22px;}
+  .hero-cijfers .n{
+    font-size:clamp(24px,2.7vw,32px);font-weight:800;letter-spacing:-.02em;line-height:1;
+  }
+  .hero-cijfers .l{
+    margin-top:7px;font-size:11.5px;letter-spacing:.13em;text-transform:uppercase;
+    font-weight:500;color:rgba(255,255,255,.7);line-height:1.4;
+  }
+
+  /* ---------- secties ---------- */
+  section{padding:74px 0;}
+  section.vlak{background:var(--vlak);}
+  .sekkop{margin-bottom:38px;max-width:62ch;}
+  .sekkop .kicker{
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;
+    font-weight:700;color:var(--blauw);margin-bottom:12px;
+  }
+  .sekkop h2{
+    font-size:clamp(25px,3vw,36px);font-weight:800;letter-spacing:-.02em;line-height:1.16;
+    text-wrap:balance;
+  }
+  .sekkop p{margin-top:14px;font-size:16.5px;color:var(--grijs);line-height:1.65;}
+
+  /* platform-punten */
+  .punten{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--rand);border:1px solid var(--rand);}
+  .punt{background:var(--wit);padding:30px 30px 32px;}
+  .punt .cijfer{
+    font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--blauw);margin-bottom:13px;
+  }
+  .punt h3{font-size:17.5px;font-weight:700;letter-spacing:-.01em;margin-bottom:9px;line-height:1.35;}
+  .punt p{font-size:15px;color:var(--grijs);line-height:1.62;}
+
+  /* pakketten */
+  .pakketten{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .pakket{
+    border:1px solid var(--rand);
+    border-radius:14px;
+    padding:30px 30px 28px;
+    background:var(--wit);
+    display:flex;flex-direction:column;
+    transition:border-color .25s,box-shadow .25s;
+  }
+  .pakket:hover{border-color:var(--blauw);box-shadow:0 10px 30px rgba(31,64,137,.09);}
+  .pakket.top{border:2px solid var(--blauw);}
+  .pakket .kop{
+    display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+    padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--rand);
+  }
+  .pakket .naam{font-size:20px;font-weight:800;letter-spacing:-.015em;color:var(--blauw-diep);line-height:1.2;}
+  .pakket .prijs{font-size:14px;font-weight:600;color:var(--grijs);white-space:nowrap;}
+  .pakket .meta{
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+    color:var(--blauw);margin-bottom:16px;
+  }
+  .pakket ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+  .pakket li{
+    font-size:14.5px;color:#2B3648;line-height:1.55;padding-left:22px;position:relative;
+  }
+  .pakket li::before{
+    content:'';position:absolute;left:2px;top:.5em;
+    width:7px;height:7px;border-radius:50%;background:var(--blauw);
+  }
+  .pakket li b{font-weight:700;color:var(--blauw-diep);}
+  .label{
+    display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--wit);background:var(--blauw);
+    padding:4px 10px;border-radius:4px;margin-bottom:14px;
+  }
+
+  /* losse opties */
+  .losse{display:grid;grid-template-columns:1fr 1fr;gap:0 46px;margin-top:6px;}
+  .los{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    padding:13px 0;border-bottom:1px solid var(--rand);font-size:15px;
+  }
+  .los b{font-weight:600;}
+  .los span.p{font-weight:700;color:var(--blauw);white-space:nowrap;}
+  .los small{display:block;font-size:12.5px;color:var(--grijs);margin-top:2px;font-weight:400;}
+
+  /* netwerk */
+  .netwerk{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;}
+  .netwerk-fotos{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .netwerk-fotos img{width:100%;height:100%;object-fit:cover;border-radius:12px;aspect-ratio:1/1;}
+  .netwerk-fotos img:first-child{grid-column:1/-1;aspect-ratio:16/10;}
+
+  /* events */
+  .events{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--rand);border:1px solid var(--rand);}
+  .event{background:var(--wit);padding:26px 26px 28px;}
+  .event .nr{font-size:11.5px;font-weight:700;letter-spacing:.14em;color:var(--blauw);margin-bottom:11px;}
+  .event h3{font-size:16.5px;font-weight:700;line-height:1.35;letter-spacing:-.01em;}
+  .event p{margin-top:7px;font-size:14px;color:var(--grijs);line-height:1.55;}
+
+  /* cta-band */
+  .cta{
+    background:var(--blauw-diep);color:var(--wit);
+    padding:60px 0;
+  }
+  .cta .wrap{display:flex;align-items:center;justify-content:space-between;gap:36px;flex-wrap:wrap;}
+  .cta h2{font-size:clamp(23px,2.7vw,31px);font-weight:800;letter-spacing:-.02em;max-width:24ch;line-height:1.2;}
+  .cta p{margin-top:11px;font-size:15.5px;color:rgba(255,255,255,.8);max-width:48ch;}
+
+  /* footer */
+  footer.site{background:var(--inkt);color:rgba(255,255,255,.72);padding:52px 0 30px;font-size:14px;}
+  .footgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  footer.site img.logo{width:88px;margin-bottom:18px;filter:brightness(0) invert(1);}
+  footer.site h4{
+    font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;
+    color:var(--wit);margin-bottom:14px;
+  }
+  footer.site ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+  footer.site a:hover{color:var(--accent);}
+  .footonder{
+    margin-top:40px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;
+    color:rgba(255,255,255,.5);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:1000px){
+    .punten,.pakketten,.events,.losse{grid-template-columns:1fr;}
+    .netwerk{grid-template-columns:1fr;gap:32px;}
+    .footgrid{grid-template-columns:1fr;gap:30px;}
+    nav.hoofd{display:none;}
+  }
+  @media (max-width:640px){
+    section{padding:52px 0;}
+    .hero{padding:52px 0 48px;}
+    .hero-cijfers{grid-template-columns:1fr;gap:20px;}
+    .hero-cijfers div{padding-right:0;}
+    .cta .wrap{flex-direction:column;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important;}
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbalk">
+  <div class="wrap">
+    <a href="#">Lid worden</a>
+    <a href="#">Ticketshop</a>
+    <a href="#">SpakenburgTV</a>
+  </div>
+</div>
+
+<header class="site">
+  <div class="wrap">
+    <img class="logo" src="assets/logo.svg" alt="SV Spakenburg">
+    <nav class="hoofd">
+      <a href="#">Onze club</a>
+      <a href="#" class="actief">Business</a>
+      <a href="#">Nieuws</a>
+      <a href="#">Onze sponsors</a>
+      <a href="#">Contact</a>
+      <a href="#mogelijkheden" class="knop-nav">Word businesspartner</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="wrap">
+    <p class="kicker">SV Spakenburg Business</p>
+    <h1>Waar voetbal en ondernemen samenkomen</h1>
+    <p class="lead">
+      Al meer dan 300 bedrijven uit de regio zijn verbonden aan SV Spakenburg. Niet alleen
+      voor zichtbaarheid op het veld, maar juist voor het netwerk eromheen: ondernemen,
+      ontmoeten en samen bouwen aan de club.
+    </p>
+    <div class="knoppen">
+      <a href="#mogelijkheden" class="knop knop-wit">Bekijk de mogelijkheden</a>
+      <a href="#contact" class="knop knop-omlijnd">Contact opnemen</a>
+    </div>
+
+    <div class="hero-cijfers">
+      <div>
+        <div class="n">300+</div>
+        <div class="l">Bedrijven in ons netwerk</div>
+      </div>
+      <div>
+        <div class="n">8.000</div>
+        <div class="l">Bezoekers per wedstrijddag</div>
+      </div>
+      <div>
+        <div class="n">2 mln</div>
+        <div class="l">Views per maand op social</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ HET IDEALE PLATFORM ============ -->
+<section>
+  <div class="wrap">
+    <div class="sekkop">
+      <p class="kicker">Het ideale platform</p>
+      <h2>Ontmoet nieuwe relaties</h2>
+      <p>
+        Een businessclub is meer dan een bord langs het veld. Bij SV Spakenburg komt u in
+        contact met ondernemers die dezelfde regio, dezelfde ambitie en vaak dezelfde
+        uitdagingen hebben.
+      </p>
+    </div>
+
+    <div class="punten">
+      <div class="punt">
+        <div class="cijfer">01</div>
+        <h3>Een zakelijk netwerk in de regio</h3>
+        <p>
+          Meer dan 300 bedrijven uit Bunschoten, Spakenburg, Amersfoort en omstreken.
+          Van het familiebedrijf om de hoek tot de internationale speler.
+        </p>
+      </div>
+      <div class="punt">
+        <div class="cijfer">02</div>
+        <h3>Events het hele seizoen</h3>
+        <p>
+          Netwerklunches op wedstrijddagen, een botterwedstrijd, golftoernooi, kerstborrel
+          en netwerkbijeenkomsten met sprekers.
+        </p>
+      </div>
+      <div class="punt">
+        <div class="cijfer">03</div>
+        <h3>Zichtbaarheid die blijft hangen</h3>
+        <p>
+          Ledboarding langs het veld, uw naam in de presentatiegids en op de website, en
+          vermelding in de businesslounge.
+        </p>
+      </div>
+      <div class="punt">
+        <div class="cijfer">04</div>
+        <h3>Flexibel, voor elk bedrijf</h3>
+        <p>
+          Van een instap met één businesspas tot een premium pakket met eigen reclame-uiting.
+          Alles is persoonlijk af te stemmen.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MOGELIJKHEDEN ============ -->
+<section class="vlak" id="mogelijkheden">
+  <div class="wrap">
+    <div class="sekkop">
+      <p class="kicker">Mogelijkheden</p>
+      <h2>Kies je niveau</h2>
+      <p>
+        Vier memberships, elk met eigen voordelen. Alles is persoonlijk af te stemmen op uw
+        bedrijf en uw doelen. Alle bedragen zijn per seizoen en exclusief 21% btw.
+      </p>
+    </div>
+
+    <div class="pakketten">
+
+      <div class="pakket">
+        <div class="kop">
+          <div class="naam">Businessclub Member</div>
+          <div class="prijs">vanaf &euro; 1.600</div>
+        </div>
+        <div class="meta">1 businesspas &middot; 0 meter led</div>
+        <ul>
+          <li>1 businesspas</li>
+          <li>maximaal 1 extra businesspas bij te boeken</li>
+          <li>1 waardecheque voor consumptiebonnen</li>
+          <li>bedrijfsnaam in de presentatiegids en op de website</li>
+          <li>bedrijfsnaam op het businessbord in de businesslounge</li>
+          <li>bijwonen van businessclubavonden door &eacute;&eacute;n persoon met &eacute;&eacute;n introducee</li>
+        </ul>
+      </div>
+
+      <div class="pakket">
+        <div class="kop">
+          <div class="naam">Businessclub Plus Member</div>
+          <div class="prijs">vanaf &euro; 3.200</div>
+        </div>
+        <div class="meta">2 businesspassen &middot; 18 meter led</div>
+        <ul>
+          <li>2 businesspassen</li>
+          <li>maximaal 1 extra businesspas bij te boeken</li>
+          <li>18 meter led</li>
+          <li>2 waardecheques voor consumptiebonnen</li>
+          <li>bedrijfsnaam in de presentatiegids en op de website</li>
+          <li>bedrijfsnaam op het businessbord en op het briefpapier</li>
+          <li>bijwonen van businessclubavonden door twee personen met twee introducees</li>
+        </ul>
+      </div>
+
+      <div class="pakket">
+        <div class="kop">
+          <div class="naam">Businessclub Partner</div>
+          <div class="prijs">vanaf &euro; 7.000</div>
+        </div>
+        <div class="meta">4 businesspassen &middot; 54 meter led</div>
+        <ul>
+          <li>4 businesspassen met gereserveerde stoelen</li>
+          <li>maximaal 1 extra businesspas bij te boeken</li>
+          <li>54 meter led</li>
+          <li>4 waardecheques voor consumptiebonnen</li>
+          <li>bedrijfsnaam in de presentatiegids en op de website</li>
+          <li>bedrijfsnaam op het businessbord en op het briefpapier</li>
+          <li>bijwonen van businessclubavonden door vier personen met vier introducees</li>
+        </ul>
+      </div>
+
+      <div class="pakket top">
+        <span class="label">Meest compleet</span>
+        <div class="kop">
+          <div class="naam">Businessclub Premium Partner</div>
+          <div class="prijs">vanaf &euro; 14.000</div>
+        </div>
+        <div class="meta">6 businesspassen &middot; 108 meter led</div>
+        <ul>
+          <li>6 businesspassen met gereserveerde stoelen</li>
+          <li>maximaal 2 extra businesspassen bij te boeken</li>
+          <li>108 meter led</li>
+          <li>6 waardecheques voor consumptiebonnen</li>
+          <li>bedrijfsnaam in de presentatiegids en op de website</li>
+          <li>bedrijfsnaam op het businessbord en op het briefpapier</li>
+          <li>bijwonen van businessclubavonden door zes personen met zes introducees</li>
+          <li><b>vlag langs het hoofdveld</b></li>
+          <li><b>Full Color A4 advertentie in de presentatiegids</b></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div style="margin-top:52px">
+      <div class="sekkop" style="margin-bottom:22px">
+        <p class="kicker">Los bij te boeken</p>
+        <h2 style="font-size:clamp(21px,2.3vw,27px)">Ook zonder membership</h2>
+      </div>
+      <div class="losse">
+        <div class="los"><span>Extra businesspas</span><span class="p">&euro; 550</span></div>
+        <div class="los"><span>Reclamebord<small>vanaf 6 meter, excl. eenmalige maakkosten</small></span><span class="p">&euro; 110 p/m</span></div>
+        <div class="los"><span>Led 9 meter</span><span class="p">&euro; 650</span></div>
+        <div class="los"><span>Led 18 meter</span><span class="p">&euro; 1.300</span></div>
+        <div class="los"><span>Led 36 meter</span><span class="p">&euro; 2.500</span></div>
+        <div class="los"><span>Led 54 meter</span><span class="p">&euro; 4.200</span></div>
+        <div class="los"><span>Led 108 meter</span><span class="p">&euro; 7.700</span></div>
+        <div class="los"><span>Hapjespartner thuiswedstrijd<small>vanaf</small></span><span class="p">&euro; 650</span></div>
+        <div class="los"><span>Wedstrijdpartner<small>wedstrijdbal, hapjes, led en introductie in de businesslounge</small></span><span class="p">&euro; 1.300</span></div>
+        <div class="los"><span>Ledpartner incidenteel<small>hele lengte</small></span><span class="p">&euro; 800</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NETWERK ============ -->
+<section>
+  <div class="wrap">
+    <div class="netwerk">
+      <div>
+        <div class="sekkop" style="margin-bottom:26px">
+          <p class="kicker">Ons netwerk</p>
+          <h2>Samen werken, samen bouwen</h2>
+          <p>
+            Bij SV Spakenburg draait het om verbinding. De club heeft meer dan 1.800 leden,
+            50+ teams en een groot team vrijwilligers. Op ons park kunnen wij meer dan
+            8.000 bezoekers verwelkomen, en met ruim 2 miljoen views per maand zijn we de
+            grootste amateurclub van Nederland op social media.
+          </p>
+        </div>
+        <a href="#" class="knop knop-blauw">Bekijk al onze partners</a>
+      </div>
+      <div class="netwerk-fotos">
+        <img src="assets/kampioen.jpg" alt="Het team viert het kampioenschap">
+        <img src="assets/luchtfoto.jpg" alt="Sportpark Westmaat aan het water">
+        <img src="assets/actie.jpg" alt="Speler in actie tijdens een wedstrijd">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EVENTS ============ -->
+<section class="vlak">
+  <div class="wrap">
+    <div class="sekkop">
+      <p class="kicker">Nieuws en events</p>
+      <h2>Het hele seizoen door</h2>
+      <p>
+        Netwerken gebeurt tijdens de netwerklunch op wedstrijddagen en bij het samenkomen in
+        de businessruimte voor en na de wedstrijd. Daarnaast organiseren we door het jaar
+        heen deze evenementen.
+      </p>
+    </div>
+
+    <div class="events">
+      <div class="event">
+        <div class="nr">01</div>
+        <h3>Netwerklunch op wedstrijddagen</h3>
+        <p>Ontmoet andere partners voorafgaand aan de wedstrijd, op verschillende zaterdagen.</p>
+      </div>
+      <div class="event">
+        <div class="nr">02</div>
+        <h3>Botterwedstrijd</h3>
+        <p>Varen op de traditionele houten vissersboten, met elkaar en met de club.</p>
+      </div>
+      <div class="event">
+        <div class="nr">03</div>
+        <h3>Golftoernooi</h3>
+        <p>Een gezellige dag op de baan voor leden van de businessclub en hun relaties.</p>
+      </div>
+      <div class="event">
+        <div class="nr">04</div>
+        <h3>Kerstborrel</h3>
+        <p>Afsluiting van het jaar met goed eten en de mensen die de club dragen.</p>
+      </div>
+      <div class="event">
+        <div class="nr">05</div>
+        <h3>Bezoek internationale voetbalwedstrijd</h3>
+        <p>Samen naar een wedstrijd elders, inclusief vervoer en ontvangst.</p>
+      </div>
+      <div class="event">
+        <div class="nr">06</div>
+        <h3>Netwerkbijeenkomst met sprekers</h3>
+        <p>Interessante sprekers over ondernemen, met volop ruimte om bij te praten.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<div class="cta" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Een bedrijf dat past bij wat u doet</h2>
+      <p>
+        Vertel ons waar uw bedrijf naartoe wil. Dan kijken we samen welk membership daarbij
+        past, zonder verplichtingen.
+      </p>
+    </div>
+    <a href="mailto:sponsorcommissie@spakenburg.com" class="knop knop-wit">Plan een kennismaking</a>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site">
+  <div class="wrap">
+    <div class="footgrid">
+      <div>
+        <img class="logo" src="assets/logo.svg" alt="SV Spakenburg">
+        <p style="max-width:34ch">
+          De businessclub van SV Spakenburg. Meer dan 300 bedrijven die samen bouwen aan de
+          club en aan elkaar.
+        </p>
+      </div>
+      <div>
+        <h4>Businessclub</h4>
+        <ul>
+          <li><a href="#mogelijkheden">Mogelijkheden</a></li>
+          <li><a href="#">Over de businessclub</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#">Onze sponsors</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li>Bestuur Businessclub SV Spakenburg</li>
+          <li><a href="mailto:sponsorcommissie@spakenburg.com">sponsorcommissie@spakenburg.com</a></li>
+          <li>Westdijk 12, Spakenburg</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footonder">
+      <span>&copy; 2026 SV Spakenburg</span>
+      <span>Privacybeleid &middot; Cookies</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
